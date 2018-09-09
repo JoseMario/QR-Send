@@ -1,14 +1,28 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
+
+<ion-navbar>
+    <ion-title>QR Send</ion-title>
+</ion-navbar>
+
 </ion-header>
 
+
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+	<ion-grid>
+      <ion-row justify-content-center align-items-center>
+        	<button ion-button round (click)="scan()">Escanear</button>
+      </ion-row>
+    </ion-grid>
+
+
+    <div *ngIf="scanData">
+        <p><b>Tipo Operación:</b> {{ scanData["ot"] }}</p>
+        <p><b>Tipo:</b> {{ layoutType[scanData["dOp"][2]["type"]] }}</p>
+        <p><b>Cuenta CLABE:</b> {{ scanData["dOp"][1]["cl"] }}</p>
+        <p><b>Banco:</b> {{ layoutType[scanData["dOp"][6]["bank"]] }}</p>
+        <p><b>Nombre de beneficiario:</b> {{ scanData["dOp"][4]["refa"] }}</p>
+        <p><b>País:</b> {{ layoutType[scanData["dOp"][7]["country"]] }}</p>
+        <p><b>Moneda:</b> {{ scanData["dOp"][8]["currency"] }}</p>
+    </div>
+
 </ion-content>
