@@ -8,6 +8,7 @@ import { BarcodeScanner ,BarcodeScannerOptions } from '@ionic-native/barcode-sca
   templateUrl: 'home.html'
 })
 export class HomePage {
+	amount : any;
 	layoutType : {};
 	scanData : {};
 	options :BarcodeScannerOptions;
@@ -18,11 +19,12 @@ export class HomePage {
   		"TC" : "Tarjeta de crédito",
   		"CL" : "CLABE interbancaria",
   		"00012" : "BBVA Bancomer",
-  		"MX" : "México"
+  		"MX" : "México",
+  		"0001" : "Transferencia"
   	};
   }
 
-  scan(){
+  scan() {
     this.options = {
       prompt : "Primero una disculpa, pero scannea tu QR!!"
     }
@@ -31,6 +33,9 @@ export class HomePage {
     }, (err) => {
         console.log("Error occured : " + err);
     });         
-	}    
+	}
 
+	send() {
+
+	}
 }

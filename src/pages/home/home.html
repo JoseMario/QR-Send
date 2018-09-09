@@ -10,19 +10,35 @@
 <ion-content padding>
 	<ion-grid>
       <ion-row justify-content-center align-items-center>
-        	<button ion-button round (click)="scan()">Escanear</button>
+        <button ion-button round (click)="scan()">Escanear</button>
       </ion-row>
     </ion-grid>
 
-
     <div *ngIf="scanData">
-        <p><b>Tipo Operación:</b> {{ scanData["ot"] }}</p>
+        <p><b>Tipo Operación:</b> {{ layoutType[scanData["ot"]] }}</p>
         <p><b>Tipo:</b> {{ layoutType[scanData["dOp"][2]["type"]] }}</p>
         <p><b>Cuenta CLABE:</b> {{ scanData["dOp"][1]["cl"] }}</p>
         <p><b>Banco:</b> {{ layoutType[scanData["dOp"][6]["bank"]] }}</p>
         <p><b>Nombre de beneficiario:</b> {{ scanData["dOp"][4]["refa"] }}</p>
         <p><b>País:</b> {{ layoutType[scanData["dOp"][7]["country"]] }}</p>
         <p><b>Moneda:</b> {{ scanData["dOp"][8]["currency"] }}</p>
+
+	    
+	    <ion-grid>
+	      <ion-row justify-content-center align-items-center>
+	        	<input type="phone" placeholder="Monto" currencyMask [(ngModel)]="value" [value]="amount" [options]="{ prefix: '$ ', thousands: ',', decimal: '.' }"/>
+	      </ion-row>
+	    </ion-grid>
+
+	    <br/><br/>
+
+
+        <ion-grid>
+	      <ion-row justify-content-center align-items-center>
+			<button ion-button round (click)="send()">Enviar</button>
+	      </ion-row>
+	    </ion-grid>
+
     </div>
 
 </ion-content>
